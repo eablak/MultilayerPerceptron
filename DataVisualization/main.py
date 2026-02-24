@@ -1,6 +1,6 @@
 import os
 import sys
-from dataset_utils import give_a_colum_name
+from dataset_utils import give_a_colum_name, draw_heatmap
 from histogram import visuazlize_histogram
 from boxplot import visualize_boxplot
 import pandas as pd
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     base_path += "/dataset/model_data.csv"
     df = pd.read_csv(base_path)
 
-    # print(df.describe())
-    # visuazlize_histogram(df)
+    print(df.describe())
+    visuazlize_histogram(df)
     visualize_boxplot(df)
-    
+    draw_heatmap(df)

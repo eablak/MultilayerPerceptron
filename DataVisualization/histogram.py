@@ -40,7 +40,7 @@ def visuazlize_histogram(df):
         """
         Results: 
         less seperator columns are: 
-            columns = ["column_0", "column_6", "column_13", "column_16", "column_18", "column_19", "column_20", "column_21"]
+            columns = ["column_0", "column_6", "column_10", "column_11", "column_13", "column_16", "column_18", "column_19", "column_20", "column_21"]
         most seperators:
             columns = ["column_2", "column_4", "column_8", "column_9", "column_22", "column24", "column25"]
         """

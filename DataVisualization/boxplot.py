@@ -19,12 +19,10 @@ def visualize_boxplot(df):
         plt.show()
 
     """
-        Most Outliers
-            Seperated Good:
-            column_9, column_27, column_28
-            Normal Seperated:
-            column_3, column_14, column_17, column_19, column_31
-            
-            Seperated Not Good:
-            column__11, column_15, column_16, column_18, column_20, column_21
+        Results: 
+        less seperator columns are:
+            (median's close to eachother & narrow IQR & Overlap)
+            columns = ["column_0", "column_10", "column_11", "column_13", "column_16", "column_18", "column_20", "column_21"]
+        most seperators:
+            columns = ["column_2", "column_4", "column_5", "column_22", "column_24", "column_25", "column_28", "column_29", ]
     """

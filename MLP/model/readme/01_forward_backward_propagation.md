@@ -1,10 +1,10 @@
-# Forward Propagation
+# Forward and Backword Propagation
 
 We pass the input data from the input layer then we do the weighted sum by multiplying the weights with the neurons and then pass it to the activation function and this defines the neurons in the next layer. <strong><i>Note that these neurons are the neurons in the next layer. </i></strong>
 
 <p align="center">
   <img 
-    src="../readme_imgs/pic25.png" 
+    src="../readme_imgs/01_imgs/pic25.png" 
     width="70%"
     style="border: 3px solid #4c53af; border-radius: 12px;">
 </p>
@@ -18,7 +18,7 @@ We pass the input data from the input layer then we do the weighted sum by multi
 <td width="60%" align="center">
 
 <img 
-src="../readme_imgs/pic26.png" 
+src="../readme_imgs/01_imgs/pic26.png" 
 width="100%" 
 style="border:3px solid #4CAF50; border-radius:12px;">
 
@@ -42,7 +42,7 @@ Similarly, to calculate the value of the second neuron, we will multiply these w
 <td width="100%" align="center">
 
 <img 
-src="../readme_imgs/pic27.png" 
+src="../readme_imgs/01_imgs/pic27.png" 
 width="100%" 
 style="border:3px solid #4CAF50; border-radius:12px;">
 
@@ -54,7 +54,7 @@ style="border:3px solid #4CAF50; border-radius:12px;">
 
 <p align="center">
   <img 
-    src="../readme_imgs/pic28.png" 
+    src="../readme_imgs/01_imgs/pic28.png" 
     width="75%"
     style="border: 3px solid #4c53af; border-radius: 12px;">
 </p>
@@ -77,7 +77,7 @@ So we get the final output by propagating the information from the input layer t
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic29.png" 
+src="../readme_imgs/01_imgs/pic29.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -98,7 +98,7 @@ If we had to used 2 hidden layers then the equations would have become these whe
 
 <td width="40%" align="center">
 <img 
-src="../readme_imgs/pic30.png" 
+src="../readme_imgs/01_imgs/pic30.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -115,7 +115,7 @@ style="border:3px solid #4c53af; border-radius:12px;">
 
 <td width="30%" align="center">
 <img 
-src="../readme_imgs/pic31.png" 
+src="../readme_imgs/01_imgs/pic31.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -134,7 +134,7 @@ Cost function in machine learning is the error representation. And as it is the 
 
 <p align="center">
 <img 
-src="../readme_imgs/pic32.png" 
+src="../readme_imgs/01_imgs/pic32.png" 
 width="65%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </p>
@@ -148,7 +148,7 @@ For example; if we are initializing weights randomly, then our model are going t
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic33.png" 
+src="../readme_imgs/01_imgs/pic33.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -169,7 +169,7 @@ Initially we are on the left half for this slope is going to the negative thus q
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic34.png" 
+src="../readme_imgs/01_imgs/pic34.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -184,7 +184,7 @@ style="border:3px solid #4c53af; border-radius:12px;">
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic35.png" 
+src="../readme_imgs/01_imgs/pic35.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -206,7 +206,7 @@ In the right half this slope is going to be the positive so this quantity is goi
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic35.png" 
+src="../readme_imgs/01_imgs/pic35.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -214,3 +214,49 @@ style="border:3px solid #4c53af; border-radius:12px;">
 </table>
 
 The process will be repeated and eventually we will reach to the local minimum after following this couple of times. <strong>This entire process is called gradient descent algorithm.</strong>
+
+<table align="center">
+<tr>
+
+<td width="30%" align="center">
+<img 
+src="../readme_imgs/01_imgs/pic36.png" 
+width="100%" 
+style="border:3px solid #4c53af; border-radius:12px;">
+</td>
+
+<td width="50%" style="vertical-align:middle; padding-left:20px;">
+There is so many parameter W so we need to update all of those W's. So the final gradient descent will look something like this. With all these equations we will update the values of w and b and once our weights and biases are updated, we will be able to reach the minimum cost function. Thus, we will be having the minimum error. Thus, having the better or proper output predictions.
+</td>
+
+</tr>
+</table>
+
+<table align="center">
+<tr>
+
+<td width="40%" style="vertical-align:middle; padding-left:20px;">
+To find the del cost by del w, we need to use cost which depends on our final output prediction a2. And a2 will depend on the weights w2 and a1. And a1 will depend on the weights w1 and the input a0. As we need to move backword from a2 to the input layer this process is called <strong> backword propagation or back propagation </strong> and with this we will be able to update all our weights and biases thus training the model.
+</td>
+
+<td width="100%" align="center">
+<img 
+src="../readme_imgs/01_imgs/pic37.png" 
+width="100%" 
+style="border:3px solid #4c53af; border-radius:12px;">
+</td>
+
+
+</tr>
+</table>
+
+## Summary
+
+<p align="center">
+<img 
+src="../readme_imgs/01_imgs/pic38.png" 
+width="70%" 
+style="border:3px solid #4c53af; border-radius:12px;">
+</p>
+
+We first initialize weights randomly. Then we move forward by doing the forward propagation step. Then we will find the value of cost function to check how our model is performing. And then we perform the backword propagation algorithm to change the values or tweak the values of the parameter w and biases. Now we need to perform all these steps again. So we'll perform these steps 2, 3 and 4 many times until and eventually we reach a minimum cost function or when our all the weights and biases are trained properly so that it can generate the final output prediction.

@@ -10,7 +10,7 @@ Artificial neural network work: We feed a set of input data and based on this in
 <td width="50%" align="center">
 
 <img 
-src="../readme_imgs/pic1.png" 
+src="../readme_imgs/00_imgs/pic1.png" 
 width="100%" 
 style="border:3px solid #4CAF50; border-radius:12px;">
 
@@ -29,7 +29,7 @@ If we pass a set of apple and orange images into the network, the network will t
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic2.png" 
+src="../readme_imgs/00_imgs/pic2.png" 
 width="100%" 
 style="border:3px solid #4CAF50; border-radius:12px;">
 </td>
@@ -48,7 +48,7 @@ The network will then try to recognize patterns stored inside these images.
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic3.png" 
+src="../readme_imgs/00_imgs/pic3.png" 
 width="100%" 
 style="border:3px solid #4CAF50; border-radius:12px;">
 </td>
@@ -67,7 +67,7 @@ Based on the learned patterns, it will make predictions for new images that it h
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic4.png" 
+src="../readme_imgs/00_imgs/pic4.png" 
 width="100%" 
 style="border:3px solid #4CAF50; border-radius:12px;">
 </td>
@@ -82,7 +82,7 @@ style="border:3px solid #4CAF50; border-radius:12px;">
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic5.png" 
+src="../readme_imgs/00_imgs/pic5.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -101,7 +101,7 @@ A neuron is a function that produces an output value. This output value can be a
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic6.png" 
+src="../readme_imgs/00_imgs/pic6.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -118,9 +118,9 @@ Different neurons store different values inside them, and these different values
 There may be some neurons which hold some numbers that are responsable for recognizing red color in an image of apple. And there maybe some other neurons for recognizing orange color in the image of orange.
 
 <p align="center">
-  <img src="../readme_imgs/pic7.png" width="45%" 
+  <img src="../readme_imgs/00_imgs/pic7.png" width="45%" 
        style="border:3px solid #4c53af; border-radius:12px; margin-right:10px;">
-  <img src="../readme_imgs/pic8.png" width="45%" 
+  <img src="../readme_imgs/00_imgs/pic8.png" width="45%" 
        style="border:3px solid #4c53af; border-radius:12px;">
 </p>
 
@@ -129,9 +129,9 @@ So when we feed an image of apple some neurons get activated and when we feed an
 Due to these activations on neurons **we can also call these neurons as activations** and as these are the functions **we can call them activation functions.**
 
 <p align="center">
-  <img src="../readme_imgs/pic9.png" width="45%" 
+  <img src="../readme_imgs/00_imgs/pic9.png" width="45%" 
        style="border:3px solid #4c53af; border-radius:12px; margin-right:10px;">
-  <img src="../readme_imgs/pic10.png" width="45%" 
+  <img src="../readme_imgs/00_imgs/pic10.png" width="45%" 
        style="border:3px solid #4c53af; border-radius:12px;">
 </p>
 
@@ -142,7 +142,7 @@ Collection of these neurons forms layers. A neural network is divided into three
 
 <p align="center">
   <img 
-    src="../readme_imgs/pic11.png" 
+    src="../readme_imgs/00_imgs/pic11.png" 
     width="55%"
     style="border: 3px solid #4c53af; border-radius: 12px;">
 </p>
@@ -153,7 +153,7 @@ Collection of these neurons forms layers. A neural network is divided into three
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic13.png" 
+src="../readme_imgs/00_imgs/pic13.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -172,7 +172,7 @@ On this final output can only can be an apple or orange. Thus the output layer w
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic14.png" 
+src="../readme_imgs/00_imgs/pic14.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -185,7 +185,7 @@ style="border:3px solid #4c53af; border-radius:12px;">
 
 <td width="35%" align="center">
 <img 
-src="../readme_imgs/pic15.png" 
+src="../readme_imgs/00_imgs/pic15.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -208,7 +208,7 @@ There is one connection between every two pair of the neurons and we assign a we
 
 <td width="60%" align="center">
 <img 
-src="../readme_imgs/pic16.png" 
+src="../readme_imgs/00_imgs/pic16.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -226,7 +226,7 @@ This can be done with weighted sum. Weighted sum is when we multiply every wiegh
 Let's say this neuron responsible for recognizing the color in the central region of the image. Now our wighted sum will be high if the color in the central region in the image now our weighted sum will be high if the color in the central region of the image is red. Thus our network will be confident about having the presence of an apple in the image instead of orange.</td>
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic17.png" 
+src="../readme_imgs/00_imgs/pic17.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -238,7 +238,7 @@ style="border:3px solid #4c53af; border-radius:12px;">
 
 <td width="60%" align="center">
 <img 
-src="../readme_imgs/pic18.png" 
+src="../readme_imgs/00_imgs/pic18.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -256,7 +256,7 @@ We need to add another parameter called bias. <strong>This bias value determines
 
 <td width="60%" align="center">
 <img 
-src="../readme_imgs/pic19.png" 
+src="../readme_imgs/00_imgs/pic19.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -274,7 +274,7 @@ Now this <strong>weighted sum will passed to the activation function which gives
 
 <td width="60%" align="center">
 <img 
-src="../readme_imgs/pic20.png" 
+src="../readme_imgs/00_imgs/pic20.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -298,7 +298,7 @@ We first initialize random values for this weights and then we train our model a
 
 <td width="50%" align="center">
 <img 
-src="../readme_imgs/pic21.png" 
+src="../readme_imgs/00_imgs/pic21.png" 
 width="100%" 
 style="border:3px solid #4c53af; border-radius:12px;">
 </td>
@@ -316,7 +316,7 @@ The multilayer perceptron is a feedforward network (meaning the data flows from 
 
 <p align="center">
   <img 
-    src="../readme_imgs/pic24.png" 
+    src="../readme_imgs/00_imgs/pic24.png" 
     width="70%"
     style="border: 3px solid #4c53af; border-radius: 12px;">
 </p>
@@ -345,7 +345,7 @@ The perceptron is type of neuron that the multilayer perceptron is composed of. 
 
 <p align="center">
   <img 
-    src="../readme_imgs/pic22.png" 
+    src="../readme_imgs/00_imgs/pic22.png" 
     width="70%"
     style="border: 3px solid #4c53af; border-radius: 12px;">
 </p>
@@ -356,7 +356,7 @@ Two steps are necessary to get the output of neuron. The first one consist in co
 
 <p align="center">
   <img 
-    src="../readme_imgs/pic23.png" 
+    src="../readme_imgs/00_imgs/pic23.png" 
     width="50%"
     style="border: 3px solid #4c53af; border-radius: 12px;">
 </p>

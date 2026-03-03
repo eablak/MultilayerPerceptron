@@ -66,6 +66,8 @@ We will be deriving the equations for the back propagations for the neural netwo
     style="border: 3px solid #4c53af; border-radius: 12px;">
 </p>
 
+So here we have only 2 hidden layers if we had multiple number of hidden layers then we can just continue repating this process. Only this "dz" term are going to change in every other layer. No matter how many layers we add in hidden layers we just need to change numbers and we can continue repeating our steps.
+
 ## Summarization
 
 <p align="center">

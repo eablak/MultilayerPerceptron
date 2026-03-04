@@ -52,15 +52,13 @@ def standardize_valid(df, mean_vals, std_vals):
 
 def save_files(X_train, y_train, X_valid, y_valid):
 
-    X_train = X_train.rename(columns={'column_0':'column_1'})
-    X_train.insert(31, "diagnosis", y_train)
-
-    X_valid = X_valid.rename(columns={'column_0':'column_1'})
-    X_valid.insert(31, "diagnosis", y_valid)
-
     output_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) + "/dataset/processed"
-    X_train.to_csv(f"{output_dir}/X_train.csv", index=False)
-    X_valid.to_csv(f"{output_dir}/X_valid.csv", index=False)
+
+    X_train.to_csv(f"{output_dir}/X_train.csv", index=False, header=False)
+    X_valid.to_csv(f"{output_dir}/X_valid.csv", index=False, header=False)
+    
+    pd.DataFrame(y_train).to_csv(f"{output_dir}/y_train.csv", index=False, header=False)
+    pd.DataFrame(y_valid).to_csv(f"{output_dir}/y_valid.csv", index=False, header=False)
 
 
 if __name__ == "__main__":

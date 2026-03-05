@@ -12,15 +12,14 @@ class MLP:
         X_train = np.loadtxt(base_path+"X_train.csv", delimiter=",")
         X_train = X_train.T
         y_train = np.loadtxt(base_path+"y_train.csv", delimiter=",").reshape(1, X_train.shape[1])
+        y_train = np.eye(2)[y_train.astype(int).flatten()].T 
         
         X_valid = np.loadtxt(base_path+"X_valid.csv", delimiter=",")
         X_valid = X_valid.T
         y_valid = np.loadtxt(base_path+"y_valid.csv", delimiter=",").reshape(1, X_valid.shape[1])
+        y_valid = np.eye(2)[y_valid.astype(int).flatten()].T 
 
         # print(X_train.shape)
-        # print(y_train.shape)
-        # print(X_valid.shape)
-        # print(y_valid.shape)
 
         return X_train, y_train, X_valid, y_valid
     
@@ -33,8 +32,9 @@ class MLP:
     
 
     def softmax(self, z):
+        z = z - np.max(z, axis=0, keepdims=True)
         expZ = np.exp(z)
-        return expZ/(np.sum(expZ, 0))
+        return expZ/(np.sum(expZ, axis=0, keepdims=True))
     
 
     def relu(self, Z):
@@ -54,7 +54,7 @@ class MLP:
         return (1 - np.power(x, 2))
     
 
-    # Step1: INITIALIZE PARAMETERS
+    # Step1: Initialize Parameters
     def initialize_parameters(self, layer_dims):
 
         L = len(layer_dims) - 1
@@ -94,11 +94,7 @@ class MLP:
 
 
         forward_cache['Z' + str(L)] =  parameters['W' + str(L)].dot(forward_cache['A' + str(L-1)]) + parameters['b' + str(L)]
-
-        if forward_cache['Z' + str(L)].shape[0] == 1:
-            forward_cache['A' + str(L)] = self.sigmoid(forward_cache['Z' + str(L)])
-        else:
-            forward_cache['A' + str(L)] = self.softmax(forward_cache['Z' + str(L)])
+        forward_cache['A' + str(L)] = self.softmax(forward_cache['Z' + str(L)])
 
         return forward_cache['A' + str(L)], forward_cache
     
@@ -119,12 +115,9 @@ class MLP:
 
         m = Y.shape[1]
 
-        if Y.shape[0] == 1:
-            cost = - (1./m) * np.sum(Y*np.log(AL) + (1-Y)*np.log(1-AL))
-        else:
-            cost = - (1./m) * np.sum(Y*np.log(AL))
-
+        cost = - (1./m) * np.sum(Y*np.log(AL))
         cost = np.squeeze(cost)
+
         return cost
     
 
@@ -166,7 +159,6 @@ class MLP:
 
     
     # Step5: Update Parameters
-
     def update_parameters(self, parameters, grads, learning_rate):
         
         L = len(parameters)//2
@@ -177,7 +169,7 @@ class MLP:
 
         return parameters
     
-
+    
     def model(self, X_train, y_train, X_valid, y_valid, layer_dims, learning_rate, activation="relu", epochs=100):
 
         parameters = self.initialize_parameters(layer_dims)
@@ -200,11 +192,8 @@ class MLP:
         m = Y.shape[1]
         preds, _ = self.forward_propagation(X, parameters, activation)
 
-        if Y.shape[0] == 1:
-            preds = np.array(preds > 0.5, dtype='float')
-        else:
-            Y = np.argmax(Y, 0)
-            preds = np.argmax(preds, axis = 0)
+        Y = np.argmax(Y, 0)
+        preds = np.argmax(preds, axis = 0)
 
         return np.round(np.sum(Y == preds)/m, 2)
 
@@ -221,4 +210,4 @@ if __name__ == "__main__":
     learning_rate = 0.0075
     epochs = 1000
 
-    parameters = mlp.model(X_train, y_train, X_valid, y_valid, layer_dims, learning_rate, "tanh", epochs)
+    parameters = mlp.model(X_train, y_train, X_valid, y_valid, layer_dims, learning_rate, "relu", epochs)

@@ -43,9 +43,6 @@ Sigmoid function is most commonly used at the output neuron in the binary classi
 
 ### 2) Tanh Function (Hyperbolic Tangent)
 
-<i>(Activation function for hidden layers in our project)</i>
-
-
 
 <table align="center">
 <tr>
@@ -115,6 +112,8 @@ So, the maximum value of the derivative of sigmoid function is only 0.25 while t
 Also in tanh function the avarage of data will be close to zero and if we use tanh function in the hidden layers then it work much better then the sigmoid function. It is because of the reason that the output of the hidden layers which is also the input to the next layer will be having the values whose avarage will be close to zero or we can say that the data is normalized or centered around zero. And when we pass a normalized data to the next layer it makes the training much more easier.
 
 ### 3) ReLU (Rectified Linear Unit)
+
+<i>(Activation function for hidden layers in our project)</i>
 
 <table align="center">
 <tr>

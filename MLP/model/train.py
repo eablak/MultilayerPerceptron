@@ -1,6 +1,7 @@
 import numpy as np
 import os
-
+import argparse
+import matplotlib.pyplot as plt
 
 class MLP:
 
@@ -173,6 +174,7 @@ class MLP:
     def model(self, X_train, y_train, X_valid, y_valid, layer_dims, learning_rate, activation="relu", epochs=100):
 
         parameters = self.initialize_parameters(layer_dims)
+        history = {"epoch": [], "accuracy": [], "loss": [], "val_accuracy": [], "val_loss": []}
 
         for i in range(0, epochs):
 
@@ -180,11 +182,20 @@ class MLP:
             cost = self.cost_function(AL, y_train)
             grads = self.backward_propagation(AL, y_train, parameters, forward_cache, activation)
             parameters = self.update_parameters(parameters, grads, learning_rate)
+            
+            AL_valid, forward_cache_valid = self.forward_propagation(X_valid, parameters, activation)
+            cost_valid = self.cost_function(AL_valid, y_valid)
 
             if i%(epochs/10) == 0:
-                print("Iter: {}\t Cost: {}\t Train_acc: {}\t Test_acc: {}".format(i, cost, self.accuracy(X_train, y_train, parameters, activation), self.accuracy(X_valid, y_valid, parameters, activation)))
+                history["epoch"].append(i)
+                history["accuracy"].append(self.accuracy(X_train, y_train, parameters, activation))
+                history["loss"].append(cost)
+                history["val_accuracy"].append(self.accuracy(X_valid, y_valid, parameters, activation))
+                history["val_loss"].append(cost_valid)
+                print("Iter: {}\t Cost: {}\t Valid_Cost: {}\t Train_acc: {}\t Test_acc: {}".format(i, cost, cost_valid, self.accuracy(X_train, y_train, parameters, activation), self.accuracy(X_valid, y_valid, parameters, activation)))
 
-        return parameters
+        self.draw_graphs(history)
+        self.save_parameters(parameters)
     
 
     def accuracy(self, X, Y, parameters, activation):
@@ -198,6 +209,34 @@ class MLP:
         return np.round(np.sum(Y == preds)/m, 2)
 
 
+    def draw_graphs(self, history):
+
+        plt.figure(figsize=(8,5))
+        plt.plot(history['loss'], label='Training Loss')
+        plt.plot(history['val_loss'], label='Validation Loss')
+        plt.title('Training vs Validation Loss (MLP)')
+        plt.xlabel('Epochs')
+        plt.ylabel('Loss')
+        plt.legend()
+        plt.show()
+
+        plt.figure(figsize=(8,5))
+        plt.plot(history['accuracy'], label='Training Accuracy')
+        plt.plot(history['val_accuracy'], label='Validation Accuracy')
+        plt.title('Training vs Validation Accuracy (MLP)')
+        plt.xlabel('Epochs')
+        plt.ylabel('Accuracy')
+        plt.legend()
+        plt.show()
+
+    
+    def save_parameters(self, parameters):
+        np.save("model_weights.npy", parameters)
+
+
+    def load_parameters(self):
+        return np.load("model_weights.npy", allow_pickle=True).item()
+
 
 if __name__ == "__main__":
     
@@ -206,8 +245,16 @@ if __name__ == "__main__":
     # mlp.tester_backword_propagation()
 
     X_train, y_train, X_valid, y_valid = mlp.get_dataset()
-    layer_dims = [X_train.shape[0], 16, 8, y_train.shape[0]]
-    learning_rate = 0.0075
-    epochs = 1000
 
-    parameters = mlp.model(X_train, y_train, X_valid, y_valid, layer_dims, learning_rate, "relu", epochs)
+    parser = argparse.ArgumentParser(description="Write the model arguments")
+    parser.add_argument("--layer", type=int, nargs="*", default=[31, 16, 8, 2])
+    parser.add_argument("--epochs", type=int, default=1000)
+    parser.add_argument("--learning_rate", type=float, default=0.0075)
+    parser.add_argument("--activation_function", type=str, default="relu")
+
+    args = parser.parse_args()
+
+    try:
+        mlp.model(X_train, y_train, X_valid, y_valid, args.layer, args.learning_rate, args.activation_function, args.epochs)
+    except Exception as e:
+        print(f"An error ocurred: {e}")

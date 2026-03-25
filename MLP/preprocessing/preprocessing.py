@@ -52,7 +52,7 @@ def standardize_valid(df, mean_vals, std_vals):
 
 def save_files(X_train, y_train, X_valid, y_valid):
 
-    output_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) + "/dataset/processed"
+    output_dir = "../../dataset/processed"
 
     X_train.to_csv(f"{output_dir}/X_train.csv", index=False, header=False)
     X_valid.to_csv(f"{output_dir}/X_valid.csv", index=False, header=False)
@@ -63,14 +63,21 @@ def save_files(X_train, y_train, X_valid, y_valid):
 
 if __name__ == "__main__":
 
-    base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    base_path += "/dataset/model_data.csv"
-    
-    df = pd.read_csv(base_path)
+    if len(sys.argv) != 2:
+        sys.exit("Please give a file path for dataset!\n" \
+        "Example usage: python3 preprocessing.py ../../dataset/model_data.csv\n" \
+        "(Run the DataVisualization/main.py first)")
 
-    X_train, y_train, X_valid, y_valid = split_df(df)
+    try:
+        file_path = sys.argv[1]
+        df = pd.read_csv(file_path)
 
-    X_train, mean_vals, std_vals  = standardize_train(X_train)
-    X_valid = standardize_valid(X_valid, mean_vals, std_vals)
+        X_train, y_train, X_valid, y_valid = split_df(df)
 
-    save_files(X_train, y_train, X_valid, y_valid)
+        X_train, mean_vals, std_vals  = standardize_train(X_train)
+        X_valid = standardize_valid(X_valid, mean_vals, std_vals)
+
+        save_files(X_train, y_train, X_valid, y_valid)
+
+    except Exception as e:
+        print("Error occured:" ,e)

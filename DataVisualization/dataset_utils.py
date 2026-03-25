@@ -4,18 +4,13 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def give_a_colum_name(base_path):
-
-    csv_path = base_path + "/dataset/data.csv"
+def give_a_colum_name(df):
 
     try:
-        df = pd.read_csv(csv_path)
         df.columns = ["column_"+str(i) for i in range(32)]
 
-        location_path = base_path + "/dataset/model_data.csv"
-        df.to_csv(location_path, index=False)
-        
-        pd.read_csv(location_path)
+        df.to_csv("../dataset/model_data.csv", index=False)
+        return pd.read_csv("../dataset/model_data.csv")
         
     except Exception as e:
         sys.exit(f"Error: {e}")

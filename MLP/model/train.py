@@ -195,7 +195,7 @@ class MLP:
                 print("Iter: {}\t Cost: {}\t Valid_Cost: {}\t Train_acc: {}\t Test_acc: {}".format(i, cost, cost_valid, self.accuracy(X_train, y_train, parameters, activation), self.accuracy(X_valid, y_valid, parameters, activation)))
 
         self.draw_graphs(history)
-        self.save_parameters(parameters)
+        self.save_model(layer_dims, activation, parameters)
     
 
     def accuracy(self, X, Y, parameters, activation):
@@ -230,12 +230,15 @@ class MLP:
         plt.show()
 
     
-    def save_parameters(self, parameters):
-        np.save("model_weights.npy", parameters)
+    def save_model(self, layer_dims, activation, parameters):
+        metadata = {"layer_dims" : layer_dims,
+                    "activation" : activation,
+                    "parameters" : parameters}
+        np.save("model.npy", metadata)
 
 
-    def load_parameters(self):
-        return np.load("model_weights.npy", allow_pickle=True).item()
+    def load_model(self):
+        return np.load("model.npy", allow_pickle=True).item()
 
 
 if __name__ == "__main__":

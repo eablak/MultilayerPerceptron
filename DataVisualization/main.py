@@ -7,15 +7,21 @@ import pandas as pd
 
 
 if __name__ == "__main__":
-    
-    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    give_a_colum_name(base_path)
+    if len(sys.argv) != 2:
+        sys.exit("Please give a file path for dataset!\n" \
+        "Example usage: python3 main.py ../dataset/data.csv")
 
-    base_path += "/dataset/model_data.csv"
-    df = pd.read_csv(base_path)
+    try:
+        file_path = sys.argv[1]
+        df = pd.read_csv(file_path)
+        
+        processed_df = give_a_colum_name(df)
 
-    print(df.describe())
-    visuazlize_histogram(df)
-    visualize_boxplot(df)
-    draw_heatmap(df)
+        print(processed_df.describe())
+        visuazlize_histogram(processed_df)
+        visualize_boxplot(processed_df)
+        draw_heatmap(processed_df)
+
+    except Exception as e:
+        print("Error ocurred:" ,e)

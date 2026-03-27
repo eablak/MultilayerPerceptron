@@ -47,7 +47,8 @@ if __name__ == "__main__":
         loss = mlp.cost_function(predictions, y)
 
         predictions_class = np.argmax(predictions, axis=0)
-        accuracy = np.sum(predictions_class == y) / len(y)
+        y_class = np.argmax(y, axis=0)
+        accuracy = np.sum(predictions_class == y_class) / len(y_class)
         
         print(f"Accuracy: {accuracy:.2f}")
         print(f"Loss: {loss:.2f}")

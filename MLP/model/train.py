@@ -116,7 +116,11 @@ class MLP:
 
         m = Y.shape[1]
 
-        cost = - (1./m) * np.sum(Y*np.log(AL))
+        if Y.shape[0] == 1:
+            cost = - (1./m) * np.sum(Y*np.log(AL) + (1-Y)*np.log(1-AL))
+        else:
+            cost = - (1./m) * np.sum(Y*np.log(AL))
+
         cost = np.squeeze(cost)
 
         return cost
@@ -252,7 +256,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Write the model arguments")
     parser.add_argument("--layer", type=int, nargs="*", default=[31, 16, 8, 2])
     parser.add_argument("--epochs", type=int, default=1000)
-    parser.add_argument("--learning_rate", type=float, default=0.0075)
+    parser.add_argument("--learning_rate", type=float, default=0.005)
     parser.add_argument("--activation_function", type=str, default="relu")
 
     args = parser.parse_args()

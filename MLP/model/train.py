@@ -256,7 +256,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Write the model arguments")
     parser.add_argument("--layer", type=int, nargs="*", default=[31, 16, 8, 2])
     parser.add_argument("--epochs", type=int, default=1000)
-    parser.add_argument("--learning_rate", type=float, default=0.005)
+    parser.add_argument("--learning_rate", type=float, default=0.05)
     parser.add_argument("--activation_function", type=str, default="relu")
 
     args = parser.parse_args()

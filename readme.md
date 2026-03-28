@@ -32,4 +32,10 @@ All neural network implementation and training process handled in here. And deta
 After train process finished training results will be saved on model.npy file. This will allow us to use same model on different datasets. Run the prediction program and see model's performance via validation dataset.
 
 
-<b>If you will run evaluation.py file you will get data_training.csv and data_test.csv files. You can run your train.py with data_training.csv after get model.npy file use it on your data_test.csv file and get the results.</b>
+### If you want to evaluate model:
+1) Put evaluation.py and data.csv file under dataset folder
+2) After runing evaluation.py file you will get data_training.csv and data_test.csv
+3) To be able to train you model with data_training.csv you need to preprocess it. Run the preprocessing.py file with data_training.csv file. After this processing step you will get X_train, X_valid, y_train, y_valid files under dataset/processed folder.
+4) Run the train.py file it will use your files under dataset/processed. After training process finish model will be saved on model.npy file.
+5) Test your model accuracy with prediction.py file. Run the prediction.py file with data_test.csv file and get the results.
+6) You can train and predict many times and every time accuracy and loss will be different. With this parameters loss is under 0.08 If you want you can update parameters and change model structure.
